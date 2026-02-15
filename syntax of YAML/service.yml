@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata: 
-    name: ClusterIP
+    name: clusterIP
     labels: 
-      app: ClusterIP
+      app: clusterIP
 spec:
     selector:
           app: nginx   
