@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata: 
   name: nginxlb
-  lables:
+  labels:
     app: nginxlb
 spec:
   containers:
@@ -24,7 +24,8 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: loadbalancer    
+  type: LoadBalancer    
 
       
+
 
