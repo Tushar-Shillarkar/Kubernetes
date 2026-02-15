@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: clusterip  # Changed name to be more descriptive
+  name: clusterip  
   labels:
     app: clusterip
 spec:
-  type: ClusterIP      # Default type. Exposes service on a cluster-internal IP.
+  type: ClusterIP      
   selector:
-    app: nginx         # CRITICAL: This must match your Pod labels exactly
+    app: nginx         
   ports:
     - protocol: TCP
-      port: 80         # The port the Service exposes
-      targetPort: 80   # The port the Container is listening on
+      port: 80         
+      targetPort: 80   
