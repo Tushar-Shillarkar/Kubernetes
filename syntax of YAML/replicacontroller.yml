@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: nginx-rc          # Name of the controller
 spec:
-  replicas: 3             # Number of copies you want
+  replicas: 4             # Number of copies you want
   selector:
     app: nginx            # Must match the labels in the template below
   template:               # This is exactly your Pod definition
