@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nginx-ml
-  replicas: 3 
+  replicas: 15 
   template: 
     metadata:
       name: nginx
