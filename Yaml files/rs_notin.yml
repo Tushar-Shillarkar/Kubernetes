@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: rs-not_in
+  name: rs-not-in
   labels: 
-    app: rs-not_in
+    app: rs-not-in
 spec: 
   selector:
     matchExpressions: 
@@ -13,7 +13,7 @@ spec:
     metadata:
       name: nginx
       labels: 
-        app: nginx-not_in
+        app: nginx-not-in
     spec: 
       containers:
         - name: nginx
