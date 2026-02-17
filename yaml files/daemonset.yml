@@ -8,7 +8,6 @@ spec:
   selector:
     matchLabels:
       app: c-watchagent
-  replicas: 3 
   template: 
     metadata:
       name: c-watchagent
