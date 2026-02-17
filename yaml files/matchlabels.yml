@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: rs-ML
+  name: rs-ml
   labels: 
-    app: rs-ML
+    app: rs-ml
 spec: 
   selector:
     matchLabels:
-      app: nginx-ML
+      app: nginx-ml
   replicas: 3 
   template: 
     metadata:
       name: nginx
       labels: 
-        app: nginx-ML
+        app: nginx-ml
     spec: 
       containers:
         - name: nginx
