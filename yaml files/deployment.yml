@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels: 
+    app: nginx-deploy
+spec: 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # How many pods can be created over the desired amount
+      maxUnavailable: 1
+      
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  replicas: 3 
+  template: 
+    metadata:
+      name: nginx
+      labels: 
+        app: nginx-deploy
+    spec: 
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports: 
+            - containerPort: 80
