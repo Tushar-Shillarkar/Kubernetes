@@ -8,21 +8,26 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1        # How many pods can be created over the desired amount
+      maxSurge: 1        
       maxUnavailable: 1
-      
   selector:
     matchLabels:
       app: nginx-deploy
   replicas: 2 
   template: 
     metadata:
-      name: nginx
       labels: 
         app: nginx-deploy
     spec: 
       containers:
-        - name: nginx
-          image: nginx:latest
-          ports: 
-            - containerPort: 80
+      - name: nginx
+        image: nginx:latest
+        ports: 
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: my-volume
+      volumes:  
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: local-pvc
