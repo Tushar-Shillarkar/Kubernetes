@@ -5,15 +5,15 @@ metadata:
   labels:
     app: nginx
 spec:
-  volumes:  # Corrected: plural
+  volumes: 
     - name: vol
       persistentVolumeClaim:
         claimName: pvc 
   containers:
   - name: nginx
     image: nginx:latest
-    ports:
-    - containerPort: 80
     volumeMounts:  
       - name: vol
         mountPath: /usr/share/nginx/html
+     ports:
+    - containerPort: 80    
