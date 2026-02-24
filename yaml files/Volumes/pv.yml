@@ -8,9 +8,6 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  capacity:
-    storage: 2Gi
+  persistentVolumeReclaimPolicy: Retain
   hostPath: 
-    path: "/mnt/data"
-
-  persistentVolumeReclaimPolicy: Retain  
+    path: "/mnt/data" 
