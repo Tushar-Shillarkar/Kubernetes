@@ -25,14 +25,14 @@ spec:
         - name: nginx
           image: nginx:latest
           ports: 
-            - containerPort: 80
-            resources:
-              requests:
-                cpu: 300m
-                memory: 300mi
-              limits: 
-                cpu: 500m
-                memory: 500mi
+          - containerPort: 80
+          resources:
+            requests:
+              cpu: 300m
+              memory: 300mi
+            limits: 
+              cpu: 500m
+              memory: 500mi
 ---
 apiVersion: autoscaling/v2
 kind:   HorizontalPodAutoscaler
