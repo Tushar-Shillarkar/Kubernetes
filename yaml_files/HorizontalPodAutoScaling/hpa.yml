@@ -34,26 +34,25 @@ spec:
               memory: 500Mi
 ---
 apiVersion: autoscaling/v2
-kind:   HorizontalPodAutoscaler
+kind: HorizontalPodAutoscaler
 metadata:
   name: nginxdeployment-hpa
   labels:
-    app: nginxdeployment 
-spec: 
-  scaleTargetRef: 
+    app: nginxdeployment
+spec:
+  scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nginxdeployment
+    name: nginxdeployment   
   minReplicas: 2
   maxReplicas: 3
-  metrics: 
+  metrics:
     - type: Resource
       resource:
-         name: cpu
+        name: cpu           
         target:
           type: Utilization
           averageUtilization: 5
-
       
 
 
