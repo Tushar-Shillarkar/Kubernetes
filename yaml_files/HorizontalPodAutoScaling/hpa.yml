@@ -33,6 +33,21 @@ spec:
               cpu: 500m
               memory: 500Mi
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip  
+  labels:
+    app: clusterip
+spec:
+  type: ClusterIP      
+  selector:
+    app: nginx         
+  ports:
+    - protocol: TCP
+      port: 80         
+      targetPort: 80   
+---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
