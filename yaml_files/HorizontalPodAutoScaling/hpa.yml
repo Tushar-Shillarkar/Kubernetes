@@ -5,16 +5,15 @@ metadata:
   labels: 
     app: nginxdeployment
 spec: 
+  replicas: 2 
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1        # How many pods can be created over the desired amount
       maxUnavailable: 1
-      
+      maxSurge: 1        # How many pods can be created over the desired amount
   selector:
     matchLabels:
       app: nginxdeployment
-  replicas: 2 
   template: 
     metadata:
       name: nginx
