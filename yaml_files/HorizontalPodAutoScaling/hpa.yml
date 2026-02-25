@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels: 
+    app: nginx-deploy
+spec: 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1        # How many pods can be created over the desired amount
+      maxUnavailable: 1
+      
+  selector:
+    matchLabels:
+      app: nginx-deploy
+  replicas: 2 
+  template: 
+    metadata:
+      name: nginx
+      labels: 
+        app: nginx-deploy
+    spec: 
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports: 
+            - containerPort: 80
+            resources:
+              requests:
+                cpu: 300m
+                memory: 300mi
+              limits: 
+                cpu: 500m
+                memory: 500mi
+---
+apiVersion: autoscaling/v2
+kind:   HorizontalPodAutoscaler
+metadata:
+  name: nginxdeployment-hpa
+  labels:
+    app: nginxdeployment 
+spec: 
+  scaleTargetRef: 
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginxdeployment
+    minReplicas: 2
+    maxReplicas: 3
+    metrics: 
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 5
+
+      
+
+
