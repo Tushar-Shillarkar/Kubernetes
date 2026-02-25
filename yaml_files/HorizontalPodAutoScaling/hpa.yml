@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deploy
+  name: nginxdeployment
   labels: 
-    app: nginx-deploy
+    app: nginxdeployment
 spec: 
   strategy:
     type: RollingUpdate
@@ -13,13 +13,13 @@ spec:
       
   selector:
     matchLabels:
-      app: nginx-deploy
+      app: nginxdeployment
   replicas: 2 
   template: 
     metadata:
       name: nginx
       labels: 
-        app: nginx-deploy
+        app: nginxdeployment
     spec: 
       containers:
         - name: nginx
